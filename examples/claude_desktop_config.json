@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "hostbridge": {
+      "command": "python",
+      "args": [
+        "-m",
+        "hostbridge",
+        "--debug"
+      ],
+      "env": {
+        "PYTHONPATH": "/path/to/your/project"
+      }
+    }
+  }
+}
