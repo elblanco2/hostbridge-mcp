@@ -1,10 +1,10 @@
-# HostBridge MCP Server
+# Arc MCP Server
 
-A Model Context Protocol (MCP) server that simplifies framework deployments on various hosting environments.
+A Model Context Protocol (MCP) server that simplifies framework deployments on various hosting environments, with a focus on shared hosting.
 
 ## Overview
 
-HostBridge bridges the gap between Large Language Models (LLMs) and hosting environments, allowing novice developers to deploy web applications easily through conversational interfaces. It implements the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) to expose tools, resources, and prompts that guide users through the deployment process.
+Arc bridges the gap between Large Language Models (LLMs) and hosting environments, allowing novice developers to deploy web applications easily through conversational interfaces. It implements the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) to expose tools, resources, and prompts that guide users through the deployment process.
 
 ### Key Features
 
@@ -13,7 +13,7 @@ HostBridge bridges the gap between Large Language Models (LLMs) and hosting envi
 - **Guided Deployments**: Prompts to guide users through the deployment process
 - **Authentication Management**: Secure storage of hosting provider credentials
 - **Troubleshooting**: Built-in tools to diagnose and fix common deployment issues
-- **Windsurf Integration**: Seamless handoff to Windsurf (Codeium's VS Code) for continued development
+- **Focused on Shared Hosting**: Simplified deployment to traditional shared hosting environments
 
 ## Status
 
@@ -31,12 +31,12 @@ This project is currently in early development. Contributions and feedback are w
 
 ```bash
 # Clone the repository
-git clone https://github.com/elblanco2/hostbridge-mcp.git
-cd hostbridge-mcp
+git clone https://github.com/elblanco2/arc-mcp.git
+cd arc-mcp
 
 # Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\\Scripts\\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -50,7 +50,7 @@ pip install -e .
 Create a `.env` file with your configuration:
 
 ```
-SECURE_STORAGE_PATH=~/.hostbridge/credentials
+SECURE_STORAGE_PATH=~/.arc/credentials
 ```
 
 ### Usage
@@ -59,31 +59,31 @@ SECURE_STORAGE_PATH=~/.hostbridge/credentials
 
 ```bash
 # Start the server directly
-hostbridge
+arc
 
 # With debug logging
-hostbridge --debug
+arc --debug
 
 # With a custom storage path
-hostbridge --secure-storage-path=/path/to/credentials
+arc --secure-storage-path=/path/to/credentials
 ```
 
 #### Using with Claude Desktop
 
 1. Edit your Claude Desktop configuration file:
    - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+   - Windows: `%APPDATA%\\Claude\\claude_desktop_config.json`
 
-2. Add HostBridge server configuration:
+2. Add Arc server configuration:
 
 ```json
 {
   "mcpServers": {
-    "hostbridge": {
+    "arc": {
       "command": "python",
       "args": [
         "-m",
-        "hostbridge",
+        "arc",
         "--debug"
       ]
     }
@@ -95,27 +95,9 @@ hostbridge --secure-storage-path=/path/to/credentials
 
 4. Start conversations with Claude about deploying your applications!
 
-#### Using with Windsurf (Codeium)
-
-The HostBridge MCP server includes special integration with Windsurf, Codeium's version of VS Code, to provide a seamless development experience after deployment:
-
-1. Deploy your application using HostBridge.
-2. Use the "windsurf-handoff" prompt to transition to Windsurf for continued development.
-3. Windsurf's AI Flow feature will guide you through adding features and improving your application.
-
-Example conversation with Claude:
-
-```
-User: I've deployed my Wasp app to Netlify. Now I want to continue development in Windsurf.
-
-Claude: I'll help you transition to Windsurf for continued development. [Uses windsurf-handoff prompt]
-
-[Claude guides the user through setting up Windsurf with the project, configuring AI Flow, and starting development]
-```
-
 ## Architecture
 
-HostBridge is built on a modular architecture:
+Arc is built on a modular architecture:
 
 - **Credentials Manager**: Securely stores and retrieves provider credentials
 - **Framework Handlers**: Framework-specific deployment logic
@@ -125,7 +107,7 @@ HostBridge is built on a modular architecture:
 ## Supported Providers
 
 | Provider | Status | Features |
-|----------|--------|----------|
+|----------|--------|------------|
 | Netlify | ✅ Complete | Serverless, Edge, Forms |
 | Vercel | ✅ Complete | Serverless, Edge, Analytics |
 | Shared Hosting | ✅ Complete | SSH/SFTP, PHP, MySQL |
@@ -134,7 +116,7 @@ HostBridge is built on a modular architecture:
 ## Supported Frameworks
 
 | Framework | Status | Features |
-|-----------|--------|----------|
+|-----------|--------|------------|
 | Wasp | ✅ Complete | Full-Stack JS Framework |
 | Next.js | 🚧 Planned | React Framework |
 | Astro | 🚧 Planned | Static Site Generator |
@@ -164,4 +146,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Model Context Protocol](https://modelcontextprotocol.io/) for enabling this integration
 - [Wasp](https://wasp-lang.dev/) for the excellent framework used in our initial support
-- [Windsurf](https://codeium.com/windsurf) for AI-powered development environment integration
