@@ -7,14 +7,14 @@ with open("requirements.txt", "r", encoding="utf-8") as f:
     requirements = f.read().splitlines()
 
 setup(
-    name="hostbridge-mcp",
+    name="arc-mcp",
     version="0.1.0",
-    author="HostBridge Contributors",
+    author="Arc Contributors",
     author_email="youremail@example.com",
     description="MCP server for simplified framework deployments on shared hosting environments",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/elblanco2/hostbridge-mcp",
+    url="https://github.com/elblanco2/arc-mcp",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -28,7 +28,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "hostbridge=hostbridge.server:main",
+            "arc=arc.server:main",
         ],
     },
 )
